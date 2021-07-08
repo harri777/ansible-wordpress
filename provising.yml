@@ -1,0 +1,22 @@
+---
+- hosts: all
+  tasks:
+    - name: Add PHP 7 PPA repository
+      become: true
+      apt_repository:
+       repo: 'ppa:ondrej/php'
+    - name: 'Install PHP7'
+      apt:
+        name: php7.3
+        state: latest
+      become: yes
+    - name: 'Install Apache2'
+      apt: 
+        name: apache2
+        state: latest
+      become: yes
+    - name: 'Install Apache2'
+      apt: 
+        name: libapache2-mod-php7.3
+        state: latest
+      become: yes
